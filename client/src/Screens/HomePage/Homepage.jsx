@@ -21,6 +21,20 @@ const ShineOneEstateHome = () => {
 
     return () => clearInterval(timer);
   }, []);
+  useEffect(() => {
+  const interval = setInterval(() => {
+    fetch(`${process.env.REACT_APP_API_PING}`)
+      .then(res => {
+        if (res.ok) {
+          console.log("✅ Server is awake");
+        } else {
+          console.warn("⚠️ Server ping responded with error");
+        }
+      })
+      .catch(err => {
+        console.error("❌ Failed to ping server:", err);
+      });
+  }, 1 * 60 * 1000); // 1 minute for testing — change to 12 later
 
   // Hero carousel
   useEffect(() => {
