@@ -21,7 +21,7 @@ db();
 // Middleware
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://shineoneestate-server.onrender.com',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 
 }));
