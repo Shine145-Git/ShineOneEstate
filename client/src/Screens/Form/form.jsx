@@ -26,20 +26,6 @@ export default function ShineOneEstateForm() {
       color: ['#F4A261', '#2E7D32', '#FFD700', '#FF6B6B', '#4ECDC4'][Math.floor(Math.random() * 5)]
     }));
     setGlitter(particles);
-    useEffect(() => {
-  const interval = setInterval(() => {
-    fetch(`${process.env.REACT_APP_API_PING}`)
-      .then(res => {
-        if (res.ok) {
-          console.log("✅ Server is awake");
-        } else {
-          console.warn("⚠️ Server ping responded with error");
-        }
-      })
-      .catch(err => {
-        console.error("❌ Failed to ping server:", err);
-      });
-  }, 1 * 60 * 1000); // 1 minute for testing — change to 12 later
 
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timer);
@@ -58,7 +44,7 @@ export default function ShineOneEstateForm() {
     
     setLoading(true);
     try {
-      const response = await fetch(process.env.REACT_APP_API_FORM_SUBMIT, { 
+      const response = await fetch('http://localhost:2000/form', { 
         method: 'POST', 
         headers: { 'Content-Type': 'application/json' }, 
         body: JSON.stringify(formData) 
@@ -297,11 +283,8 @@ export default function ShineOneEstateForm() {
               <br />
               🎁 <span style={{ color: '#F4A261', fontWeight: '600' }}>Limited Time:</span> Free site visit + Legal verification
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', fontSize: '0.8rem', color: '#999' }}>
-              <span>⭐⭐⭐⭐⭐</span>
-              <span>4.9/5 rating</span>
-              <span>•</span>
-              <span>10,000+ happy families</span>
+            <div style={{ fontSize: '0.85rem', color: '#999', textAlign: 'center' }}>
+              🏡 Trusted by families for genuine advice, not just transactions.
             </div>
           </div>
         </div>
@@ -314,7 +297,7 @@ export default function ShineOneEstateForm() {
             <span style={{ animation: 'bounce 2s infinite 0.4s' }}>💎</span>
           </div>
           <p style={{ margin: '0', fontSize: '0.9rem', fontWeight: '500', opacity: '0.9' }}>
-            ✨ <span style={{ color: '#FFD700' }}>Award-winning</span> real estate platform trusted across NCR
+            ✨ Empowering plot buyers with clarity, care, and commitment.
           </p>
         </div>
       </div>
