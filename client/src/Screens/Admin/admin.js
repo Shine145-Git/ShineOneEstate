@@ -21,7 +21,7 @@ const AdminPropertyDashboard = () => {
     address: "",
     status: "Available",
   });
-  useEffect(() => {
+useEffect(() => {
   const interval = setInterval(() => {
     fetch(`${process.env.REACT_APP_API_PING}`)
       .then(res => {
@@ -34,7 +34,10 @@ const AdminPropertyDashboard = () => {
       .catch(err => {
         console.error("❌ Failed to ping server:", err);
       });
-  }, 1 * 60 * 1000); // every 12 minutes
+  }, 1 * 60 * 1000); // 1 minute for testing — change to 12 later
+
+  return () => clearInterval(interval);
+}, []);
 
   return () => clearInterval(interval);
 }, []);
