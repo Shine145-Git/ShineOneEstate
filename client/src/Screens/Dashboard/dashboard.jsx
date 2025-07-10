@@ -104,7 +104,7 @@ const ShineOneEstate = () => {
 
   const contactWhatsApp = (plotId) => {
     const message = `Hi! I'm interested in plot ${plotId} from ShineOneEstate. Can you provide more details?`;
-    window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`);
+    window.open(`https://wa.me/919310994032?text=${encodeURIComponent(message)}`);
   };
 
   const viewDetails = (plotId) => {
