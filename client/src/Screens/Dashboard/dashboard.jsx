@@ -370,8 +370,8 @@ const ShineOneEstate = () => {
           </div>
           <div style={styles.footerSection}>
             <h3 style={styles.footerTitle}>Contact Info</h3>
-            <p>📞 +91 9876543210</p>
-            <p>✉️ info@shineoneestate.com</p>
+            <p>📞 +91 9310994032</p>
+            <p>✉️ https://shineoneestate.onrender.com</p>
             <p>📍 Gurgaon, Haryana</p>
           </div>
         </div>
