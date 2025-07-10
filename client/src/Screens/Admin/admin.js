@@ -23,7 +23,17 @@ const AdminPropertyDashboard = () => {
   });
   useEffect(() => {
   const interval = setInterval(() => {
-    fetch(`${process.env.REACT_APP_API_PING}`);
+    fetch(`${process.env.REACT_APP_API_PING}`)
+      .then(res => {
+        if (res.ok) {
+          console.log("✅ Server is awake");
+        } else {
+          console.warn("⚠️ Server ping responded with error");
+        }
+      })
+      .catch(err => {
+        console.error("❌ Failed to ping server:", err);
+      });
   }, 12 * 60 * 1000); // every 12 minutes
 
   return () => clearInterval(interval);
