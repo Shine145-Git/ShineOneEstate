@@ -39,9 +39,6 @@ useEffect(() => {
   return () => clearInterval(interval);
 }, []);
 
-  return () => clearInterval(interval);
-}, []);
-
   const [images, setImages] = useState([]);
 
   // Load properties for update/delete operations
