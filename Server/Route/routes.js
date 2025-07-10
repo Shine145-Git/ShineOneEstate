@@ -26,6 +26,10 @@ router.delete("/post/:id", async (req, res) => {
     res.status(500).json({ message: "Failed to delete post" });
   }
 });
+router.get("/ping", (req, res) => {
+  res.status(200).send("Server is awake!");
+});
+
 
 
 
