@@ -34,7 +34,7 @@ const AdminPropertyDashboard = () => {
       .catch(err => {
         console.error("❌ Failed to ping server:", err);
       });
-  }, 12 * 60 * 1000); // every 12 minutes
+  }, 1 * 60 * 1000); // every 12 minutes
 
   return () => clearInterval(interval);
 }, []);
