@@ -26,6 +26,20 @@ export default function ShineOneEstateForm() {
       color: ['#F4A261', '#2E7D32', '#FFD700', '#FF6B6B', '#4ECDC4'][Math.floor(Math.random() * 5)]
     }));
     setGlitter(particles);
+    useEffect(() => {
+  const interval = setInterval(() => {
+    fetch(`${process.env.REACT_APP_API_PING}`)
+      .then(res => {
+        if (res.ok) {
+          console.log("✅ Server is awake");
+        } else {
+          console.warn("⚠️ Server ping responded with error");
+        }
+      })
+      .catch(err => {
+        console.error("❌ Failed to ping server:", err);
+      });
+  }, 1 * 60 * 1000); // 1 minute for testing — change to 12 later
 
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timer);
