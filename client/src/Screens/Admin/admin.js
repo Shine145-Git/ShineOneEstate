@@ -21,6 +21,13 @@ const AdminPropertyDashboard = () => {
     address: "",
     status: "Available",
   });
+  useEffect(() => {
+  const interval = setInterval(() => {
+    fetch(`${process.env.REACT_APP_API_PING}`);
+  }, 12 * 60 * 1000); // every 12 minutes
+
+  return () => clearInterval(interval);
+}, []);
 
   const [images, setImages] = useState([]);
 
