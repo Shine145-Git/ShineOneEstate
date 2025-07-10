@@ -21,7 +21,7 @@ db();
 // Middleware
 
 app.use(cors({
-  origin: 'https://shineoneestate.onrender.com',
+  origin: allowedOrigins,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 
 }));
