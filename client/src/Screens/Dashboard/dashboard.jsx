@@ -213,8 +213,8 @@ const ShineOneEstate = () => {
       {/* Hero Section */}
       <section style={styles.hero}>
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle} className="hero-title">Premium Plots in Emerging Areas</h1>
-          <p style={styles.heroSubtitle}>Discover your dream plot in Sector 92-95 & Sohna Road</p>
+          <h1 style={styles.heroTitle} className="hero-title">Premium Properties in Emerging Areas</h1>
+          <p style={styles.heroSubtitle}>Discover your dream property in NCR’s fastest-growing locations</p>
           <div style={styles.heroStats} className="hero-stats">
             <div style={styles.stat}>
               <div style={styles.statNumber}>500+</div>
@@ -356,7 +356,7 @@ const ShineOneEstate = () => {
         <div style={styles.footerContent}>
           <div style={styles.footerSection}>
             <h3 style={styles.footerTitle}>ShineOneEstate</h3>
-            <p>Your trusted partner in finding premium residential plots in emerging areas. We specialize in high-growth locations with excellent connectivity and future potential.</p>
+            <p>Helping you find premium residential properties in high-growth locations with great connectivity and future potential.
           </div>
           <div style={styles.footerSection}>
             <h3 style={styles.footerTitle}>Quick Links</h3>
