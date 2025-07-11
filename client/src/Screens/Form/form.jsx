@@ -41,19 +41,23 @@ export default function ShineOneEstateForm() {
       setMessage('📱 Please enter a valid 10-digit contact number'); 
       return; 
     }
-    
+    // Budget number validation
+    if (formData.budget && isNaN(Number(formData.budget))) {
+      setMessage('💰 Please enter a valid number for budget.');
+      return;
+    }
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:2000/form', { 
+      const response = await fetch(process.env.REACT_APP_API_FORM_SUBMIT, { 
         method: 'POST', 
         headers: { 'Content-Type': 'application/json' }, 
         body: JSON.stringify(formData) 
       });
-       const result = await response.json(); // 👈 get the actual userId from response
+      const result = await response.json(); // 👈 get the actual userId from response
 
-        if (response.ok && result.userId) {
-            localStorage.setItem("userId", result.userId);
-        }
+      if (response.ok && result.userId) {
+        localStorage.setItem("userId", result.userId);
+      }
       if (response.ok) { 
         setMessage(`🎉 Welcome aboard, ${formData.name}! Your exclusive property tour starts now...`); 
         setTimeout(() => window.location.href = '/properties', 2500); 
