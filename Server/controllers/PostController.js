@@ -3,7 +3,7 @@ const Post = require("../models/post.model");
 
 const postController = async (req, res) => {
   try {
-    const { price, pricePerSqFt, area, size, locality, tags, featured, preferred, address, status } = req.body;
+    const { price, pricePerSqFt, type , area, size, locality, tags, featured, preferred, address, status } = req.body;
 
     // Upload images to Cloudinary
     const imageUrls = [];
@@ -17,6 +17,7 @@ const postController = async (req, res) => {
       image: imageUrls,
       price: Number(price),
       pricePerSqFt: Number(pricePerSqFt),
+      type,
       area: Number(area),
       size: Number(size),
       locality,
@@ -49,13 +50,14 @@ const updatePost = async (req, res) => {
   try {
     const { id } = req.body;
     const {
-      price, pricePerSqFt, area, size, locality, tags,
+      price, pricePerSqFt,type, area, size, locality, tags,
       featured, preferred, address, status
     } = req.body;
 
     const updatedPost = await Post.findByIdAndUpdate(id, {
       price: Number(price),
       pricePerSqFt: Number(pricePerSqFt),
+      type,
       area: Number(area),
       size: Number(size),
       locality,
