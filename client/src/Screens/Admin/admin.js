@@ -12,6 +12,7 @@ const AdminPropertyDashboard = () => {
   const [form, setForm] = useState({
     price: "",
     pricePerSqFt: "",
+    type: "",
     area: "",
     size: "",
     locality: "",
@@ -21,23 +22,23 @@ const AdminPropertyDashboard = () => {
     address: "",
     status: "Available",
   });
-useEffect(() => {
-  const interval = setInterval(() => {
-    fetch(`${process.env.REACT_APP_API_PING}`)
-      .then(res => {
-        if (res.ok) {
-          console.log("✅ Server is awake");
-        } else {
-          console.warn("⚠️ Server ping responded with error");
-        }
-      })
-      .catch(err => {
-        console.error("❌ Failed to ping server:", err);
-      });
-  }, 1 * 60 * 1000); // 1 minute for testing — change to 12 later
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch(`${process.env.REACT_APP_API_PING}`)
+        .then((res) => {
+          if (res.ok) {
+            console.log("✅ Server is awake");
+          } else {
+            console.warn("⚠️ Server ping responded with error");
+          }
+        })
+        .catch((err) => {
+          console.error("❌ Failed to ping server:", err);
+        });
+    }, 1 * 60 * 1000); // 1 minute for testing — change to 12 later
 
-  return () => clearInterval(interval);
-}, []);
+    return () => clearInterval(interval);
+  }, []);
 
   const [images, setImages] = useState([]);
 
@@ -75,6 +76,7 @@ useEffect(() => {
     setForm({
       price: "",
       pricePerSqFt: "",
+      type: "",
       area: "",
       size: "",
       locality: "",
@@ -108,7 +110,10 @@ useEffect(() => {
     // Append form fields
     for (let key in form) {
       if (key === "tags") {
-        formData.append(key, form[key].split(",").map(tag => tag.trim()));
+        formData.append(
+          key,
+          form[key].split(",").map((tag) => tag.trim())
+        );
       } else {
         formData.append(key, form[key]);
       }
@@ -118,7 +123,7 @@ useEffect(() => {
       setLoading(true);
       const response = await fetch(process.env.REACT_APP_API_ADD_PROPERTY, {
         method: "POST",
-        body: formData
+        body: formData,
       });
 
       if (response.ok) {
@@ -135,12 +140,12 @@ useEffect(() => {
     }
   };
   useEffect(() => {
-  const randomId = Math.floor(1000 + Math.random() * 9000); // e.g., 4-digit code
-  setForm(prev => ({
-    ...prev,
-    locality: `#${randomId}`
-  }));
-}, []);
+    const randomId = Math.floor(1000 + Math.random() * 9000); // e.g., 4-digit code
+    setForm((prev) => ({
+      ...prev,
+      locality: `#${randomId}`,
+    }));
+  }, []);
 
   // Update Property
   const handleUpdateProperty = async (e) => {
@@ -163,7 +168,10 @@ useEffect(() => {
     // Append form fields
     for (let key in form) {
       if (key === "tags") {
-        formData.append(key, form[key].split(",").map(tag => tag.trim()));
+        formData.append(
+          key,
+          form[key].split(",").map((tag) => tag.trim())
+        );
       } else {
         formData.append(key, form[key]);
       }
@@ -173,7 +181,7 @@ useEffect(() => {
       setLoading(true);
       const response = await fetch(process.env.REACT_APP_API_UPDATE_PROPERTY, {
         method: "POST",
-        body: formData
+        body: formData,
       });
 
       if (response.ok) {
@@ -201,7 +209,9 @@ useEffect(() => {
       setLoading(true);
       // Simulated API call - replace with actual axios call
       console.log("Deleting property:", propertyId);
-      await axios.delete(`${process.env.REACT_APP_API_DELETE_PROPERTY_BASE}/${propertyId}`);
+      await axios.delete(
+        `${process.env.REACT_APP_API_DELETE_PROPERTY_BASE}/${propertyId}`
+      );
       setMessage("Property deleted successfully!");
       fetchProperties();
     } catch (err) {
@@ -218,6 +228,7 @@ useEffect(() => {
     setForm({
       price: property.price || "",
       pricePerSqFt: property.pricePerSqFt || "",
+      type: property.type || "",
       area: property.area || "",
       size: property.size || "",
       locality: property.locality || "",
@@ -234,13 +245,13 @@ useEffect(() => {
     padding: "20px",
     maxWidth: "800px",
     margin: "auto",
-    fontFamily: "Arial, sans-serif"
+    fontFamily: "Arial, sans-serif",
   };
 
   const tabContainerStyle = {
     display: "flex",
     marginBottom: "20px",
-    borderBottom: "2px solid #ddd"
+    borderBottom: "2px solid #ddd",
   };
 
   const tabStyle = {
@@ -250,14 +261,14 @@ useEffect(() => {
     border: "none",
     borderBottom: "2px solid transparent",
     margin: "0 5px 0 0",
-    borderRadius: "5px 5px 0 0"
+    borderRadius: "5px 5px 0 0",
   };
 
   const activeTabStyle = {
     ...tabStyle,
     backgroundColor: "#007bff",
     color: "white",
-    borderBottom: "2px solid #007bff"
+    borderBottom: "2px solid #007bff",
   };
 
   const inputStyle = {
@@ -267,7 +278,7 @@ useEffect(() => {
     padding: "8px",
     border: "1px solid #ddd",
     borderRadius: "4px",
-    fontSize: "14px"
+    fontSize: "14px",
   };
 
   const buttonStyle = {
@@ -277,12 +288,12 @@ useEffect(() => {
     border: "none",
     borderRadius: "4px",
     cursor: "pointer",
-    fontSize: "14px"
+    fontSize: "14px",
   };
 
   const dangerButtonStyle = {
     ...buttonStyle,
-    backgroundColor: "#dc3545"
+    backgroundColor: "#dc3545",
   };
 
   const propertyCardStyle = {
@@ -290,7 +301,7 @@ useEffect(() => {
     borderRadius: "5px",
     padding: "15px",
     marginBottom: "10px",
-    backgroundColor: "#f9f9f9"
+    backgroundColor: "#f9f9f9",
   };
 
   const messageStyle = {
@@ -299,13 +310,17 @@ useEffect(() => {
     borderRadius: "4px",
     backgroundColor: message.includes("success") ? "#d4edda" : "#f8d7da",
     color: message.includes("success") ? "#155724" : "#721c24",
-    border: message.includes("success") ? "1px solid #c3e6cb" : "1px solid #f5c6cb"
+    border: message.includes("success")
+      ? "1px solid #c3e6cb"
+      : "1px solid #f5c6cb",
   };
 
   return (
     <div style={containerStyle}>
-      <h1 style={{ textAlign: "center", marginBottom: "30px" }}>Admin Property Dashboard</h1>
-      
+      <h1 style={{ textAlign: "center", marginBottom: "30px" }}>
+        Admin Property Dashboard
+      </h1>
+
       {/* Tab Navigation */}
       <div style={tabContainerStyle}>
         <button
@@ -360,6 +375,17 @@ useEffect(() => {
               style={inputStyle}
               required
             />
+            <select
+              name="type"
+              value={form.type}
+              onChange={handleChange}
+              style={inputStyle}
+              required
+            >
+              <option value="">Select Property Type</option>
+              <option value="plot">Plot</option>
+              <option value="flat">Flat</option>
+            </select>
             <input
               type="number"
               name="size"
@@ -369,14 +395,14 @@ useEffect(() => {
               style={inputStyle}
               required
             />
-       <input
-  type="text"
-  name="locality"
-  value={form.locality}
-  placeholder="Auto-generated ID"
-  style={inputStyle}
-  readOnly
-/>
+            <input
+              type="text"
+              name="locality"
+              value={form.locality}
+              placeholder="Auto-generated ID"
+              style={inputStyle}
+              readOnly
+            />
             <input
               type="text"
               name="tags"
@@ -409,8 +435,8 @@ useEffect(() => {
                 name="featured"
                 checked={form.featured}
                 onChange={handleChange}
-              />
-              {" "}Featured
+              />{" "}
+              Featured
             </label>
             <label style={{ marginBottom: "10px", display: "block" }}>
               <input
@@ -418,8 +444,8 @@ useEffect(() => {
                 name="preferred"
                 checked={form.preferred}
                 onChange={handleChange}
-              />
-              {" "}Preferred
+              />{" "}
+              Preferred
             </label>
             <input
               type="file"
@@ -429,7 +455,12 @@ useEffect(() => {
               style={{ ...inputStyle, padding: "5px" }}
               accept="image/*"
             />
-            <button type="button" style={buttonStyle} onClick={handleAddProperty} disabled={loading}>
+            <button
+              type="button"
+              style={buttonStyle}
+              onClick={handleAddProperty}
+              disabled={loading}
+            >
               {loading ? "Adding..." : "Add Property"}
             </button>
           </div>
@@ -446,12 +477,20 @@ useEffect(() => {
               <h3>Select a property to update:</h3>
               {properties.map((property) => (
                 <div key={property._id} style={propertyCardStyle}>
-                  <h4>{property.locality} - ₹{property.price}</h4>
-                  <p>Area: {property.area} sqft | Size: {property.size} sq yards | Status: {property.status}</p>
+                  <h4>
+                    {property.locality} - ₹{property.price}
+                  </h4>
+                  <p>
+                    Area: {property.area} sqft | Size: {property.size} sq yards
+                    | Status: {property.status}
+                  </p>
                   <p>Price/SqFt: ₹{property.pricePerSqFt}</p>
                   <p>Address: {property.address}</p>
                   <p>Tags: {property.tags?.join(", ")}</p>
-                  <p>Featured: {property.featured ? "Yes" : "No"} | Preferred: {property.preferred ? "Yes" : "No"}</p>
+                  <p>
+                    Featured: {property.featured ? "Yes" : "No"} | Preferred:{" "}
+                    {property.preferred ? "Yes" : "No"}
+                  </p>
                   <button
                     style={buttonStyle}
                     onClick={() => selectPropertyForUpdate(property)}
@@ -462,12 +501,16 @@ useEffect(() => {
               ))}
             </div>
           )}
-          
+
           {selectedProperty && (
             <div>
               <h3>Updating Property: {selectedProperty.locality}</h3>
               <button
-                style={{ ...buttonStyle, backgroundColor: "#6c757d", marginBottom: "15px" }}
+                style={{
+                  ...buttonStyle,
+                  backgroundColor: "#6c757d",
+                  marginBottom: "15px",
+                }}
                 onClick={() => resetForm()}
               >
                 Back to Selection
@@ -491,6 +534,17 @@ useEffect(() => {
                   style={inputStyle}
                   required
                 />
+                <select
+                  name="type"
+                  value={form.type}
+                  onChange={handleChange}
+                  style={inputStyle}
+                  required
+                >
+                  <option value="">Select Property Type</option>
+                  <option value="plot">Plot</option>
+                  <option value="flat">Flat</option>
+                </select>
                 <input
                   type="number"
                   name="area"
@@ -500,6 +554,7 @@ useEffect(() => {
                   style={inputStyle}
                   required
                 />
+
                 <input
                   type="number"
                   name="size"
@@ -550,8 +605,8 @@ useEffect(() => {
                     name="featured"
                     checked={form.featured}
                     onChange={handleChange}
-                  />
-                  {" "}Featured
+                  />{" "}
+                  Featured
                 </label>
                 <label style={{ marginBottom: "10px", display: "block" }}>
                   <input
@@ -559,8 +614,8 @@ useEffect(() => {
                     name="preferred"
                     checked={form.preferred}
                     onChange={handleChange}
-                  />
-                  {" "}Preferred
+                  />{" "}
+                  Preferred
                 </label>
                 <input
                   type="file"
@@ -570,7 +625,12 @@ useEffect(() => {
                   style={{ ...inputStyle, padding: "5px" }}
                   accept="image/*"
                 />
-                <button type="button" style={buttonStyle} onClick={handleUpdateProperty} disabled={loading}>
+                <button
+                  type="button"
+                  style={buttonStyle}
+                  onClick={handleUpdateProperty}
+                  disabled={loading}
+                >
                   {loading ? "Updating..." : "Update Property"}
                 </button>
               </div>
@@ -588,12 +648,20 @@ useEffect(() => {
             <h3>Select a property to delete:</h3>
             {properties.map((property) => (
               <div key={property._id} style={propertyCardStyle}>
-                <h4>{property.locality} - ₹{property.price}</h4>
-                <p>Area: {property.area} sqft | Size: {property.size} sq yards | Status: {property.status}</p>
+                <h4>
+                  {property.locality} - ₹{property.price}
+                </h4>
+                <p>
+                  Area: {property.area} sqft | Size: {property.size} sq yards |
+                  Status: {property.status}
+                </p>
                 <p>Price/SqFt: ₹{property.pricePerSqFt}</p>
                 <p>Address: {property.address}</p>
                 <p>Tags: {property.tags?.join(", ")}</p>
-                <p>Featured: {property.featured ? "Yes" : "No"} | Preferred: {property.preferred ? "Yes" : "No"}</p>
+                <p>
+                  Featured: {property.featured ? "Yes" : "No"} | Preferred:{" "}
+                  {property.preferred ? "Yes" : "No"}
+                </p>
                 <button
                   style={dangerButtonStyle}
                   onClick={() => handleDeleteProperty(property._id)}
