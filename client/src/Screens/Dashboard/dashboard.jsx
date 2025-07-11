@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
-
 const ShineOneEstate = () => {
   const [properties, setProperties] = useState([]);
   const [allProperties, setAllProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [filters, setFilters] = useState({ location: '', priceRange: '', size: '' });
+  const [filters, setFilters] = useState({ location: '', propertyType: '', priceRange: '' });
   const [locations, setLocations] = useState([]);
   const [selectedPlot, setSelectedPlot] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  // Fetch properties on component mount
   useEffect(() => {
     fetchProperties();
   }, []);
@@ -20,21 +17,15 @@ const ShineOneEstate = () => {
     try {
       setLoading(true);
       const userId = localStorage.getItem("userId");
-
-      // Fetch all posts
       const response = await fetch(process.env.REACT_APP_API_GET_POSTS);
       const data = await response.json();
       let properties = data.posts || data || [];
-
-      // Fetch preferred plots for the user
       let preferred = [];
       if (userId) {
         const userRes = await fetch(`${process.env.REACT_APP_API_GET_USER}/${userId}`);
         const userData = await userRes.json();
         preferred = userData.preferredPlots || [];
       }
-
-      // Mark preferred plots
       properties = properties.map(p => ({
         ...p,
         preferred: preferred.includes(p._id)
@@ -42,11 +33,8 @@ const ShineOneEstate = () => {
 
       setProperties(properties);
       setAllProperties(properties);
-
-      // Extract unique locations
       const uniqueLocations = [...new Set(properties.map(p => p.locality).filter(Boolean))];
       setLocations(uniqueLocations);
-
       setError(null);
     } catch (err) {
       console.error('Error fetching properties:', err);
@@ -55,21 +43,17 @@ const ShineOneEstate = () => {
       setLoading(false);
     }
   };
-
-  // Toggle heart preference
   const toggleHeart = async (plotId, isActive) => {
-    // Retrieve userId from localStorage
     const userId = localStorage.getItem("userId");
-    // Log the request body for debugging 400 errors
     console.log("Sending to server:", { userId, plotId });
     try {
-     const response = await fetch(process.env.REACT_APP_API_MARK_PREFERRED_PLOT, {
+      const response = await fetch(process.env.REACT_APP_API_MARK_PREFERRED_PLOT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId, plotId })
       });
       if (response.ok) {
-        setProperties(prev => prev.map(prop => 
+        setProperties(prev => prev.map(prop =>
           (prop.id || prop._id) === plotId ? { ...prop, preferred: !isActive } : prop
         ));
       }
@@ -77,13 +61,14 @@ const ShineOneEstate = () => {
       console.error('Error updating preference:', err);
     }
   };
-
-  // Filter properties
   const filterProperties = () => {
     let filtered = [...allProperties];
     
     if (filters.location) {
       filtered = filtered.filter(p => p.locality?.toLowerCase().includes(filters.location.replace('-', ' ')));
+    }
+    if (filters.propertyType) {
+      filtered = filtered.filter(p => p.type?.toLowerCase() === filters.propertyType);
     }
     if (filters.priceRange) {
       const [min, max] = filters.priceRange === '200+' ? [200, Infinity] : filters.priceRange.split('-').map(Number);
@@ -92,22 +77,14 @@ const ShineOneEstate = () => {
         return price >= min && price <= max;
       });
     }
-    if (filters.size) {
-      const [min, max] = filters.size === '1000+' ? [1000, Infinity] : filters.size.split('-').map(Number);
-      filtered = filtered.filter(p => {
-        const plotSize = parseInt(p.size) || 0;
-        return plotSize >= min && plotSize <= max;
-      });
-    }
     
     setProperties(filtered);
   };
+  const contactWhatsApp = (plotId) => {
+    const plot = properties.find(p => (p.id || p._id) === plotId);
+    if (!plot) return;
 
- const contactWhatsApp = (plotId) => {
-  const plot = properties.find(p => (p.id || p._id) === plotId);
-  if (!plot) return;
-
-  const message = `
+    const message = `
 Hi! I'm interested in this property from ShineOneEstate:
 
 🏡 ${plot.title || `Premium Plot - ${plot.locality}`}
@@ -118,8 +95,8 @@ Hi! I'm interested in this property from ShineOneEstate:
 Please share more details.
 `;
 
-  window.open(`https://wa.me/919310994032?text=${encodeURIComponent(message)}`);
-};
+    window.open(`https://wa.me/919310994032?text=${encodeURIComponent(message)}`);
+  };
 
   const viewDetails = (plotId) => {
     const plot = properties.find(p => (p.id || p._id) === plotId);
@@ -127,7 +104,6 @@ Please share more details.
     setShowModal(true);
   };
 
-  // Styles
   const styles = {
     body: { margin: 0, padding: 0, fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif", background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', minHeight: '100vh' },
     header: { background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(10px)', padding: '1rem 0', position: 'sticky', top: 0, zIndex: 1000, boxShadow: '0 2px 20px rgba(0,0,0,0.1)' },
@@ -199,8 +175,8 @@ Please share more details.
             <span style={styles.logoIcon}>🏠</span>
             ShineOneEstate
           </div>
-          <button 
-            style={styles.mobileMenuBtn} 
+          <button
+            style={styles.mobileMenuBtn}
             className="mobile-menu-btn"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
@@ -222,8 +198,6 @@ Please share more details.
           )}
         </nav>
       </header>
-
-      {/* Hero Section */}
       <section style={styles.hero}>
         <div style={styles.heroContent}>
           <h1 style={styles.heroTitle} className="hero-title">Premium Properties in Emerging Areas</h1>
@@ -244,13 +218,14 @@ Please share more details.
           </div>
         </div>
       </section>
-
-      {/* Filters */}
+      
       <section style={styles.filters}>
         <div style={styles.filterRow} className="filter-row">
+
+          {/* Location Filter */}
           <div style={styles.filterGroup}>
             <label style={styles.filterLabel}>Location</label>
-            <select style={styles.filterInput} value={filters.location} onChange={(e) => setFilters({...filters, location: e.target.value})}>
+            <select style={styles.filterInput} value={filters.location} onChange={(e) => setFilters({ ...filters, location: e.target.value })}>
               <option value="">All Locations</option>
               {locations.map((loc, index) => (
                 <option key={index} value={loc.toLowerCase().replace(/\s+/g, '-')}>
@@ -259,9 +234,21 @@ Please share more details.
               ))}
             </select>
           </div>
+
+          {/* Property Type Filter */}
+          <div style={styles.filterGroup}>
+            <label style={styles.filterLabel}>Property Type</label>
+            <select style={styles.filterInput} value={filters.propertyType} onChange={(e) => setFilters({ ...filters, propertyType: e.target.value })}>
+              <option value="">All</option>
+              <option value="plot">Plot</option>
+              <option value="flat">Flat</option>
+            </select>
+          </div>
+
+          {/* Price Range Filter */}
           <div style={styles.filterGroup}>
             <label style={styles.filterLabel}>Price Range</label>
-            <select style={styles.filterInput} value={filters.priceRange} onChange={(e) => setFilters({...filters, priceRange: e.target.value})}>
+            <select style={styles.filterInput} value={filters.priceRange} onChange={(e) => setFilters({ ...filters, priceRange: e.target.value })}>
               <option value="">All Prices</option>
               <option value="0-50">₹0 - ₹50 Lakhs</option>
               <option value="50-100">₹50 - ₹100 Lakhs</option>
@@ -269,23 +256,12 @@ Please share more details.
               <option value="200+">₹200+ Lakhs</option>
             </select>
           </div>
-          <div style={styles.filterGroup}>
-            <label style={styles.filterLabel}>Plot Size</label>
-            <select style={styles.filterInput} value={filters.size} onChange={(e) => setFilters({...filters, size: e.target.value})}>
-              <option value="">All Sizes</option>
-              <option value="100-300">100-300 Sq Yards</option>
-              <option value="300-500">300-500 Sq Yards</option>
-              <option value="500-1000">500-1000 Sq Yards</option>
-              <option value="1000+">1000+ Sq Yards</option>
-            </select>
-          </div>
+
           <div style={styles.filterGroup}>
             <button style={styles.filterBtn} onClick={filterProperties}>🔍 Search Properties</button>
           </div>
         </div>
       </section>
-
-      {/* Properties Grid */}
       <section style={styles.propertiesContainer}>
         <div style={styles.propertiesGrid} className="properties-grid">
           {loading ? (
@@ -323,8 +299,6 @@ Please share more details.
                       <div style={styles.specLabel}>Sq Yards</div>
                     </div>
                     <div style={styles.spec}>
-{/*                       <div style={styles.specValue}>{prop.facing || 'N/A'}</div> */}
-{/*                       <div style={styles.specLabel}>Facing</div> */}
                     </div>
                     <div style={styles.spec}>
                       <div style={styles.specValue}>{prop.type || 'Residential'}</div>
@@ -335,13 +309,13 @@ Please share more details.
                   <div style={styles.propertyActions}>
                     <button style={styles.btnPrimary} onClick={() => viewDetails(prop.id || prop._id)}>View Details</button>
                     <button style={styles.btnWhatsapp} onClick={() => contactWhatsApp(prop.id || prop._id)}>
-  <img 
-    src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-    alt="WhatsApp" 
-    style={{ width: '20px', height: '20px', marginRight: '0.5rem' }}
-  />
-  WhatsApp
-</button>
+                      <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                        alt="WhatsApp"
+                        style={{ width: '20px', height: '20px', marginRight: '0.5rem' }}
+                      />
+                      WhatsApp
+                    </button>
                   </div>
                 </div>
               </div>
@@ -349,8 +323,6 @@ Please share more details.
           )}
         </div>
       </section>
-
-      {/* Modal for Property Details */}
       {showModal && selectedPlot && (
         <div style={styles.modal}>
           <div style={styles.modalContent}>
@@ -359,7 +331,6 @@ Please share more details.
             <p><strong>Locality:</strong> {selectedPlot.locality}</p>
             <p><strong>Address:</strong> {selectedPlot.address}</p>
             <p><strong>Size:</strong> {selectedPlot.area || 'N/A'} Sq Yards</p>
-            {/* <p><strong>Facing:</strong> {selectedPlot.facing || 'N/A'}</p> */}
             <p><strong>Type:</strong> {selectedPlot.type || 'Residential'}</p>
             <p><strong>Price:</strong> ₹{selectedPlot.price} Lakhs</p>
             <p><strong>Price Per SqFt:</strong> ₹{selectedPlot.pricePerSqFt}</p>
@@ -368,8 +339,6 @@ Please share more details.
           </div>
         </div>
       )}
-
-      {/* Footer */}
       <footer style={styles.footer}>
         <div style={styles.footerContent}>
           <div style={styles.footerSection}>
@@ -406,80 +375,10 @@ Please share more details.
           <p>&copy; 2024 ShineOneEstate. All rights reserved.</p>
         </div>
       </footer>
-
       <style>
-        {`
-          @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-          }
-          @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-          
-          /* Mobile Styles */
-          @media (max-width: 768px) {
-            .mobile-menu-btn {
-              display: block !important;
-            }
-            
-            .nav-links {
-              display: none !important;
-            }
-            
-            .mobile-nav-links {
-              display: flex !important;
-            }
-            
-            .hero-title {
-              font-size: 2rem !important;
-            }
-            
-            .hero-stats {
-              flex-direction: column !important;
-              gap: 1rem !important;
-            }
-            
-            .filter-row {
-              flex-direction: column !important;
-            }
-            
-            .properties-grid {
-              grid-template-columns: 1fr !important;
-            }
-          }
-          
-          /* Tablet Styles */
-          @media (max-width: 1024px) and (min-width: 769px) {
-            .properties-grid {
-              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-            }
-          }
-          
-          /* Small Mobile Styles */
-          @media (max-width: 480px) {
-            .hero-title {
-              font-size: 1.5rem !important;
-            }
-            
-            .hero-stats {
-              gap: 0.5rem !important;
-            }
-            
-            .properties-grid {
-              grid-template-columns: 1fr !important;
-              gap: 1rem !important;
-            }
-            
-            .filter-row {
-              gap: 0.5rem !important;
-            }
-          }
-        `}
+       
       </style>
     </div>
   );
 };
-
 export default ShineOneEstate;
