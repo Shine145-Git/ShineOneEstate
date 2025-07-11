@@ -134,6 +134,13 @@ useEffect(() => {
       setLoading(false);
     }
   };
+  useEffect(() => {
+  const randomId = Math.floor(1000 + Math.random() * 9000); // e.g., 4-digit code
+  setForm(prev => ({
+    ...prev,
+    locality: `#${randomId}`
+  }));
+}, []);
 
   // Update Property
   const handleUpdateProperty = async (e) => {
@@ -362,15 +369,14 @@ useEffect(() => {
               style={inputStyle}
               required
             />
-            <input
-              type="text"
-              name="locality"
-              placeholder="Locality"
-              value={form.locality}
-              onChange={handleChange}
-              style={inputStyle}
-              required
-            />
+       <input
+  type="text"
+  name="locality"
+  value={form.locality}
+  placeholder="Auto-generated ID"
+  style={inputStyle}
+  readOnly
+/>
             <input
               type="text"
               name="tags"
