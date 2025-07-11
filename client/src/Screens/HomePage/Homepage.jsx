@@ -294,18 +294,20 @@ export default function ShineOneEstate() {
             color: '#2D2D2D', 
             margin: '0 0 16px 0'
           }}>
-            Ready to Invest in Premium Plots?
+            Ready to Invest in Premium Properties?
           </h2>
-          <p style={{ 
-            fontSize: '1.1rem', 
-            color: '#6B7280', 
-            margin: '0 0 32px 0',
-            maxWidth: '600px',
-            marginLeft: 'auto',
-            marginRight: 'auto'
-          }}>
-            Discover exclusive residential plots in high-growth areas with verified documentation and guaranteed returns
-          </p>
+         <p style={{
+  fontSize: '1.1rem',
+  color: '#6B7280',
+  margin: '0 0 32px 0',
+  maxWidth: '600px',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  zIndex: 1,
+  position: 'relative'
+}}>
+  Discover exclusive residential properties in high-growth areas with verified documentation and guaranteed returns
+</p>
           <button 
             style={{ 
               backgroundColor: '#2E7D32',
@@ -331,7 +333,7 @@ export default function ShineOneEstate() {
               e.currentTarget.style.boxShadow = '0 2px 4px rgba(46,125,50,0.2)';
             }}
           >
-            Explore Premium Plots
+            Explore Premium Properties
           </button>
         </div>
       </main>
