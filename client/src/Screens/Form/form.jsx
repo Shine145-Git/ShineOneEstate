@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { User, Phone, Home, MapPin, TrendingUp, Sparkles, Heart, Star, Crown, Gift } from 'lucide-react';
 
 export default function ShineOneEstateForm() {
-  const [formData, setFormData] = useState({ name: '', contact: '' });
+  const [formData, setFormData] = useState({ name: '', contact: '', budget: '' });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [fadeIn, setFadeIn] = useState(false);
@@ -34,7 +34,7 @@ export default function ShineOneEstateForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.contact) { 
-      setMessage('🚨 Please share your details to unlock exclusive deals!'); 
+      setMessage('🚨 Please share your details to unlock exclusive plots!'); 
       return; 
     }
     if (!/^\d{10}$/.test(formData.contact)) { 
@@ -44,11 +44,11 @@ export default function ShineOneEstateForm() {
     
     setLoading(true);
     try {
-  const response = await fetch(process.env.REACT_APP_API_FORM_SUBMIT, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(formData)
-  });
+      const response = await fetch('http://localhost:2000/form', { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' }, 
+        body: JSON.stringify(formData) 
+      });
        const result = await response.json(); // 👈 get the actual userId from response
 
         if (response.ok && result.userId) {
@@ -191,9 +191,9 @@ export default function ShineOneEstateForm() {
               🚀 Start Your Journey Today
             </h2>
             <p style={{ fontSize: '1rem', color: '#666', margin: '0', lineHeight: '1.6', animation: 'fadeInUp 1s ease-out 2.2s both' }}>
-  Be among the <span style={{ color: '#F4A261', fontWeight: '600' }}>visionaries</span> investing in tomorrow’s prime locations. 
-  <br />Unlock <span style={{ color: '#2E7D32', fontWeight: '600' }}>exclusive early-stage opportunities</span> today ✨
-</p>
+              Join <span style={{ color: '#F4A261', fontWeight: '600' }}>12,847 smart investors</span> who secured their future with us! 
+              <br />Get instant access to <span style={{ color: '#2E7D32', fontWeight: '600' }}>exclusive pre-launch offers</span> 🎁
+            </p>
           </div>
 
           <div style={{ marginBottom: '1.5rem', position: 'relative', animation: 'fadeInUp 1s ease-out 2.4s both' }}>
@@ -203,7 +203,7 @@ export default function ShineOneEstateForm() {
             <input 
               type="text" 
               name="name" 
-              placeholder="Your Name" 
+              placeholder="What should we call you? (e.g., Mr. Sharma)" 
               value={formData.name} 
               onChange={handleChange} 
               required 
@@ -220,11 +220,28 @@ export default function ShineOneEstateForm() {
             <input 
               type="tel" 
               name="contact" 
-              placeholder="Your Contact Number" 
+              placeholder="Your WhatsApp number (for instant updates)" 
               value={formData.contact} 
               onChange={handleChange} 
               required 
               maxLength="10" 
+              style={{ width: '100%', padding: '1.2rem 1.2rem 1.2rem 3.5rem', border: '2px solid #E9ECEF', borderRadius: '16px', fontSize: '1rem', outline: 'none', transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)', background: 'rgba(255, 255, 255, 0.9)', boxSizing: 'border-box', fontWeight: '500' }} 
+              onFocus={(e) => { e.target.style.borderColor = '#2E7D32'; e.target.style.boxShadow = '0 0 0 4px rgba(46, 125, 50, 0.1)'; e.target.style.transform = 'translateY(-2px)'; }} 
+              onBlur={(e) => { e.target.style.borderColor = '#E9ECEF'; e.target.style.boxShadow = 'none'; e.target.style.transform = 'translateY(0)'; }} 
+            />
+          </div>
+
+          <div style={{ marginBottom: '2rem', position: 'relative', animation: 'fadeInUp 1s ease-out 2.7s both' }}>
+            <div style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#2E7D32', zIndex: '1', animation: 'pulse 2s infinite' }}>
+              <TrendingUp size={22} />
+            </div>
+            <input 
+              type="number" 
+              name="budget" 
+              placeholder="What's your budget? (in ₹)" 
+              value={formData.budget || ''} 
+              onChange={handleChange} 
+              required 
               style={{ width: '100%', padding: '1.2rem 1.2rem 1.2rem 3.5rem', border: '2px solid #E9ECEF', borderRadius: '16px', fontSize: '1rem', outline: 'none', transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)', background: 'rgba(255, 255, 255, 0.9)', boxSizing: 'border-box', fontWeight: '500' }} 
               onFocus={(e) => { e.target.style.borderColor = '#2E7D32'; e.target.style.boxShadow = '0 0 0 4px rgba(46, 125, 50, 0.1)'; e.target.style.transform = 'translateY(-2px)'; }} 
               onBlur={(e) => { e.target.style.borderColor = '#E9ECEF'; e.target.style.boxShadow = 'none'; e.target.style.transform = 'translateY(0)'; }} 
@@ -260,7 +277,7 @@ export default function ShineOneEstateForm() {
                   </>
                 ) : (
                   <>
-                    🚀 Unlock Your Dream Property
+                    🚀 Unlock Premium Plots Now
                     <Heart size={20} style={{ animation: 'heartbeat 1s infinite' }} />
                   </>
                 )}
