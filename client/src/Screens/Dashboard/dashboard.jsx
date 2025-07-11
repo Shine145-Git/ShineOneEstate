@@ -103,10 +103,23 @@ const ShineOneEstate = () => {
     setProperties(filtered);
   };
 
-  const contactWhatsApp = (plotId) => {
-    const message = `Hi! I'm interested in plot ${plotId} from ShineOneEstate. Can you provide more details?`;
-    window.open(`https://wa.me/919310994032?text=${encodeURIComponent(message)}`);
-  };
+ const contactWhatsApp = (plotId) => {
+  const plot = properties.find(p => (p.id || p._id) === plotId);
+  if (!plot) return;
+
+  const message = `
+Hi! I'm interested in this property from ShineOneEstate:
+
+🏡 ${plot.title || `Premium Plot - ${plot.locality}`}
+📍 Location: ${plot.locality || 'N/A'}
+📐 Area: ${plot.area || 'N/A'} Sq Yards
+💰 Price: ₹${plot.price || 'N/A'} Lakhs
+
+Please share more details.
+`;
+
+  window.open(`https://wa.me/919310994032?text=${encodeURIComponent(message)}`);
+};
 
   const viewDetails = (plotId) => {
     const plot = properties.find(p => (p.id || p._id) === plotId);
