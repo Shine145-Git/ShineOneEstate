@@ -22,14 +22,14 @@ const ShineOneEstate = () => {
       const userId = localStorage.getItem("userId");
 
       // Fetch all posts
-      const response = await fetch('http://localhost:2000/getposts');
+      const response = await fetch(process.env.REACT_APP_API_GET_POSTS);
       const data = await response.json();
       let properties = data.posts || data || [];
 
       // Fetch preferred plots for the user
       let preferred = [];
       if (userId) {
-        const userRes = await fetch(`http://localhost:2000/get-user/${userId}`);
+        const userRes = await fetch(`${process.env.REACT_APP_API_GET_USER}/${userId}`);
         const userData = await userRes.json();
         preferred = userData.preferredPlots || [];
       }
@@ -63,7 +63,7 @@ const ShineOneEstate = () => {
     // Log the request body for debugging 400 errors
     console.log("Sending to server:", { userId, plotId });
     try {
-      const response = await fetch('http://localhost:2000/mark-preferred-plot', {
+     const response = await fetch(process.env.REACT_APP_API_MARK_PREFERRED_PLOT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId, plotId })
