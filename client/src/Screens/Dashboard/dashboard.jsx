@@ -366,6 +366,7 @@ Please share more details.
           </div>
           <div style={styles.footerSection}>
             <h3 style={styles.footerTitle}>Contact Info</h3>
+            <p>Parveen Chawla</p>
             <p>📞 +91 9310994032</p>
             <p>✉️ ShineOneEstate@gmail.com</p>
             <p>📍 Gurgaon, Haryana</p>
