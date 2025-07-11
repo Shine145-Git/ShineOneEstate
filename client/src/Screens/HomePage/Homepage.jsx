@@ -159,7 +159,7 @@ export default function ShineOneEstate() {
               24+
             </div>
             <div style={{ fontSize: '0.95rem', color: '#6B7280' }}>
-              Partner Developers
+               Developers
             </div>
           </div>
          
