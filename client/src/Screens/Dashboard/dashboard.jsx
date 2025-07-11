@@ -322,8 +322,13 @@ const ShineOneEstate = () => {
                   <div style={styles.propertyActions}>
                     <button style={styles.btnPrimary} onClick={() => viewDetails(prop.id || prop._id)}>View Details</button>
                     <button style={styles.btnWhatsapp} onClick={() => contactWhatsApp(prop.id || prop._id)}>
-                      📱 WhatsApp
-                    </button>
+  <img 
+    src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+    alt="WhatsApp" 
+    style={{ width: '20px', height: '20px', marginRight: '0.5rem' }}
+  />
+  WhatsApp
+</button>
                   </div>
                 </div>
               </div>
