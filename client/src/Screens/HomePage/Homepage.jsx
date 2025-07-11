@@ -130,7 +130,7 @@ export default function ShineOneEstate() {
             maxWidth: '600px',
             lineHeight: '1.6'
           }}>
-            Connect with India's leading real estate developers for premium residential plots in prime locations
+            Discover verified plots, premium flats, and investment-ready properties in high-growth locations
           </p>
         </div>
       </header>
