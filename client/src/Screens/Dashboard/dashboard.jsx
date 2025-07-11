@@ -356,7 +356,7 @@ const ShineOneEstate = () => {
         <div style={styles.footerContent}>
           <div style={styles.footerSection}>
             <h3 style={styles.footerTitle}>ShineOneEstate</h3>
-            <p>Helping you find premium residential properties in high-growth locations with great connectivity and future potential.
+            <p>Helping you find premium residential properties in high-growth locations with great connectivity and future potential.</p>
           </div>
           <div style={styles.footerSection}>
             <h3 style={styles.footerTitle}>Quick Links</h3>
