@@ -34,7 +34,7 @@ export default function ShineOneEstateForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.contact) { 
-      setMessage('🚨 Please share your details to unlock exclusive plots!'); 
+      setMessage('🚨 Please share your details to unlock exclusive deals!'); 
       return; 
     }
     if (!/^\d{10}$/.test(formData.contact)) { 
@@ -203,7 +203,7 @@ export default function ShineOneEstateForm() {
             <input 
               type="text" 
               name="name" 
-              placeholder="What should we call you? (e.g., Mr. Sharma)" 
+              placeholder="Your Name" 
               value={formData.name} 
               onChange={handleChange} 
               required 
@@ -220,7 +220,7 @@ export default function ShineOneEstateForm() {
             <input 
               type="tel" 
               name="contact" 
-              placeholder="Your WhatsApp number (for instant updates)" 
+              placeholder="Your Contact Number" 
               value={formData.contact} 
               onChange={handleChange} 
               required 
@@ -260,7 +260,7 @@ export default function ShineOneEstateForm() {
                   </>
                 ) : (
                   <>
-                    🚀 Unlock Premium Plots Now
+                    🚀 Unlock Your Dream Property
                     <Heart size={20} style={{ animation: 'heartbeat 1s infinite' }} />
                   </>
                 )}
