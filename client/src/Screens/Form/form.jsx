@@ -44,11 +44,11 @@ export default function ShineOneEstateForm() {
     
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:2000/form', { 
-        method: 'POST', 
-        headers: { 'Content-Type': 'application/json' }, 
-        body: JSON.stringify(formData) 
-      });
+  const response = await fetch(process.env.REACT_APP_API_FORM_SUBMIT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData)
+  });
        const result = await response.json(); // 👈 get the actual userId from response
 
         if (response.ok && result.userId) {
