@@ -15,6 +15,11 @@ const PostSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  type: {
+  type: String,
+  enum: ['plot', 'flat'], // restricts values to only these two
+  required: true
+},
   area: {
     type: Number,
     required: true
