@@ -260,21 +260,7 @@ export default function ShineOneEstate() {
                 </div>
               </div>
               
-              <div style={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                gap: '8px',
-                fontSize: '0.9rem',
-                color: '#2E7D32'
-              }}>
-                <span style={{ 
-                  width: '8px', 
-                  height: '8px', 
-                  backgroundColor: '#A3E635', 
-                  borderRadius: '50%'
-                }}></span>
-                Active Partner
-              </div>
+            
             </div>
           ))}
         </div>
