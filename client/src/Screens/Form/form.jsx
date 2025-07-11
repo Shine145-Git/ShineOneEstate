@@ -191,9 +191,9 @@ export default function ShineOneEstateForm() {
               🚀 Start Your Journey Today
             </h2>
             <p style={{ fontSize: '1rem', color: '#666', margin: '0', lineHeight: '1.6', animation: 'fadeInUp 1s ease-out 2.2s both' }}>
-              Join <span style={{ color: '#F4A261', fontWeight: '600' }}>12,847 smart investors</span> who secured their future with us! 
-              <br />Get instant access to <span style={{ color: '#2E7D32', fontWeight: '600' }}>exclusive pre-launch offers</span> 🎁
-            </p>
+  Be among the <span style={{ color: '#F4A261', fontWeight: '600' }}>visionaries</span> investing in tomorrow’s prime locations. 
+  <br />Unlock <span style={{ color: '#2E7D32', fontWeight: '600' }}>exclusive early-stage opportunities</span> today ✨
+</p>
           </div>
 
           <div style={{ marginBottom: '1.5rem', position: 'relative', animation: 'fadeInUp 1s ease-out 2.4s both' }}>
