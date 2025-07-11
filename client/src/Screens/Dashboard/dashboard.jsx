@@ -310,8 +310,8 @@ const ShineOneEstate = () => {
                       <div style={styles.specLabel}>Sq Yards</div>
                     </div>
                     <div style={styles.spec}>
-                      <div style={styles.specValue}>{prop.facing || 'N/A'}</div>
-                      <div style={styles.specLabel}>Facing</div>
+{/*                       <div style={styles.specValue}>{prop.facing || 'N/A'}</div> */}
+{/*                       <div style={styles.specLabel}>Facing</div> */}
                     </div>
                     <div style={styles.spec}>
                       <div style={styles.specValue}>{prop.type || 'Residential'}</div>
