@@ -4,7 +4,7 @@ const sendEmail = require("../middleware/EmailVerify");
 // This comes from a form data
 const registerUser = async (req, res) => {
   try {
-    const { name, contact } = req.body;
+    const { name, contact, budget } = req.body;
     if (!name || !contact) {
       return res.status(400).json({ message: "All fields are required" });
     }
@@ -12,7 +12,7 @@ const registerUser = async (req, res) => {
     await sendEmail(
   process.env.EMAIL_USER,
   "📥 New Property Lead Received",
-  `You have a new potential customer inquiry:\n\n👤 Name: ${name}\n📞 Contact: ${contact}\n\nPlease reach out to assist them with available plots.`
+  `You have a new potential customer inquiry:\n\n👤 Name: ${name}\n📞 Contact: ${contact}\n💰 Budget: ₹${budget || "Not provided"}\n\nPlease reach out to assist them with available plots.`
 );
     await user.save();
     res.json({ message: "User registered successfully", userId: user._id });
