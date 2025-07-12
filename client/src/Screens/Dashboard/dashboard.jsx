@@ -154,7 +154,7 @@ filterBtn: {
   transition: 'all 0.3s ease', 
   width: '100%',
   marginTop: '1.9rem' // aligns the button with dropdowns
-}
+},
     propertiesGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' },
     propertyCard: { background: 'white', borderRadius: '15px', overflow: 'hidden', boxShadow: '0 5px 20px rgba(0,0,0,0.1)', transition: 'all 0.3s ease', position: 'relative' },
     propertyImage: { height: '200px', background: 'linear-gradient(45deg, #667eea, #764ba2)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem', color: 'rgba(255,255,255,0.3)' },
