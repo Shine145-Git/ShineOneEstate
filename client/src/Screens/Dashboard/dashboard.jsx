@@ -80,6 +80,14 @@ const ShineOneEstate = () => {
     
     setProperties(filtered);
   };
+  const filteredPlots = plots.filter((plot) => {
+  const locationMatch = filters.location
+    ? plot.address === filters.location
+    : true;
+
+  // add any other filters here...
+  return locationMatch;
+});
   const contactWhatsApp = (plotId) => {
     const plot = properties.find(p => (p.id || p._id) === plotId);
     if (!plot) return;
@@ -222,18 +230,25 @@ Please share more details.
       <section style={styles.filters}>
         <div style={styles.filterRow} className="filter-row">
 
+         
           {/* Location Filter */}
-          <div style={styles.filterGroup}>
-            <label style={styles.filterLabel}>Location</label>
-            <select style={styles.filterInput} value={filters.location} onChange={(e) => setFilters({ ...filters, location: e.target.value })}>
-              <option value="">All Locations</option>
-              {locations.map((loc, index) => (
-                <option key={index} value={loc.toLowerCase().replace(/\s+/g, '-')}>
-                  {loc}
-                </option>
-              ))}
-            </select>
-          </div>
+<div style={styles.filterGroup}>
+  <label style={styles.filterLabel}>Location</label>
+  <select
+    style={styles.filterInput}
+    value={filters.location}
+    onChange={(e) =>
+      setFilters({ ...filters, location: e.target.value })
+    }
+  >
+    <option value="">All Locations</option>
+    {[...new Set(plots.map((plot) => plot.address))].map((loc, index) => (
+      <option key={index} value={loc}>
+        {loc}
+      </option>
+    ))}
+  </select>
+</div>
 
           {/* Property Type Filter */}
           <div style={styles.filterGroup}>
