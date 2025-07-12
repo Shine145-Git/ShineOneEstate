@@ -65,7 +65,7 @@ const ShineOneEstate = () => {
     let filtered = [...allProperties];
     
     if (filters.location) {
-      filtered = filtered.filter(p => p.locality?.toLowerCase().includes(filters.location.replace('-', ' ')));
+      filtered = filtered.filter(p => p.address === filters.location);
     }
     if (filters.propertyType) {
       filtered = filtered.filter(p => p.type?.toLowerCase() === filters.propertyType);
