@@ -289,7 +289,9 @@ Please share more details.
                   </button>
                 </div>
                 <div style={styles.propertyDetails}>
-                  <h3 style={styles.propertyTitle}>{prop.title || `Premium Plot - ${prop.locality}`}</h3>
+                 <h3 style={styles.propertyTitle}>
+  {prop.title ? `${prop.title} - ${prop.locality}` : `Premium Property - ${prop.locality}`}
+</h3>
                   <div style={styles.propertyLocation}>
                     📍 {prop.locality || 'Gurgaon'}
                   </div>
@@ -305,8 +307,8 @@ Please share more details.
                       <div style={styles.specLabel}>Type</div>
                     </div>
                   </div>
-                  <div style={styles.propertyPrice}>
-  {typeof prop.price === 'number' ? `₹${prop.price} Lakhs` : ''}
+                 <div style={styles.propertyPrice}>
+  {prop.price > 0 ? `₹${prop.price} Lakhs` : ''}
 </div>
                   <div style={styles.propertyActions}>
                     <button style={styles.btnPrimary} onClick={() => viewDetails(prop.id || prop._id)}>View Details</button>
