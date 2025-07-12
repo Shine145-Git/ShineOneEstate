@@ -59,8 +59,8 @@ export default function ShineOneEstateForm() {
         localStorage.setItem("userId", result.userId);
       }
       if (response.ok) { 
-        setMessage(`🎉 Welcome aboard, ${formData.name}! Your exclusive property tour starts now...`); 
-        setTimeout(() => window.location.href = '/properties', 2500); 
+        setMessage(`✅ Thank you! Our team will get in touch with you shortly to help you find the right property.`); 
+        // setTimeout(() => window.location.href = '/properties', 2500); 
       } else { 
         setMessage('💔 Something went wrong. Let\'s try again!'); 
       }
@@ -83,9 +83,9 @@ export default function ShineOneEstateForm() {
   };
 
   const benefits = [
-    { icon: '🏡', title: 'Premium Locations', desc: 'Sector 92-95 & Sohna Road' },
-    { icon: '📈', title: '300% Returns', desc: 'Guaranteed appreciation' },
-    { icon: '⚡', title: 'Quick Approval', desc: 'Same-day site visit' },
+    { icon: '🏡', title: 'Premium Locations', desc: 'Dwarka Expressway' },
+    // { icon: '📈', title: '300% Returns', desc: 'Guaranteed appreciation' },
+    // { icon: '⚡', title: 'Quick Approval', desc: 'Same-day site visit' },
     { icon: '🎁', title: 'Special Offers', desc: 'Limited time deals' }
   ];
 
@@ -179,9 +179,7 @@ export default function ShineOneEstateForm() {
 
         {/* Personal Benefits Grid */}
         <div style={{ padding: '2rem', background: 'linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%)', borderBottom: '1px solid rgba(244, 162, 97, 0.2)' }}>
-          <h3 style={{ textAlign: 'center', margin: '0 0 1.5rem 0', color: '#2E7D32', fontSize: '1.2rem', fontWeight: '600', animation: 'fadeInUp 1s ease-out 0.8s both' }}>
-            🎯 Why 50,000+ Families Chose Us
-          </h3>
+         
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '1rem' }}>
             {benefits.map((benefit, index) => (
               <div key={index} style={{ textAlign: 'center', padding: '1rem', background: 'rgba(255, 255, 255, 0.8)', borderRadius: '16px', border: '1px solid rgba(244, 162, 97, 0.2)', transition: 'all 0.3s ease', animation: `fadeInUp 1s ease-out ${1 + index * 0.2}s both` }} onMouseEnter={(e) => { e.target.style.transform = 'translateY(-5px)'; e.target.style.boxShadow = '0 10px 25px rgba(0,0,0,0.1)'; }} onMouseLeave={(e) => { e.target.style.transform = 'translateY(0)'; e.target.style.boxShadow = 'none'; }}>
@@ -200,7 +198,7 @@ export default function ShineOneEstateForm() {
               🚀 Start Your Journey Today
             </h2>
             <p style={{ fontSize: '1rem', color: '#666', margin: '0', lineHeight: '1.6', animation: 'fadeInUp 1s ease-out 2.2s both' }}>
-              Join <span style={{ color: '#F4A261', fontWeight: '600' }}>12,847 smart investors</span> who secured their future with us! 
+              Join <span style={{ color: '#F4A261', fontWeight: '600' }}>smart investors</span> who secured their future with us! 
               <br />Get instant access to <span style={{ color: '#2E7D32', fontWeight: '600' }}>exclusive pre-launch offers</span> 🎁
             </p>
           </div>
@@ -212,7 +210,7 @@ export default function ShineOneEstateForm() {
             <input 
               type="text" 
               name="name" 
-              placeholder="What should we call you? (e.g., Mr. Sharma)" 
+              placeholder="Your Name" 
               value={formData.name} 
               onChange={handleChange} 
               required 
@@ -229,7 +227,7 @@ export default function ShineOneEstateForm() {
             <input 
               type="tel" 
               name="contact" 
-              placeholder="Your WhatsApp number (for instant updates)" 
+              placeholder="Your Number" 
               value={formData.contact} 
               onChange={handleChange} 
               required 
@@ -286,7 +284,7 @@ export default function ShineOneEstateForm() {
                   </>
                 ) : (
                   <>
-                    🚀 Unlock Premium Plots Now
+                    Continue
                     <Heart size={20} style={{ animation: 'heartbeat 1s infinite' }} />
                   </>
                 )}
@@ -307,7 +305,7 @@ export default function ShineOneEstateForm() {
               <br />
               💬 Get instant property updates on WhatsApp
               <br />
-              🎁 <span style={{ color: '#F4A261', fontWeight: '600' }}>Limited Time:</span> Free site visit + Legal verification
+{/*               🎁 <span style={{ color: '#F4A261', fontWeight: '600' }}>Limited Time:</span> Free site visit + Legal verification */}
             </div>
             <div style={{ fontSize: '0.85rem', color: '#999', textAlign: 'center' }}>
               🏡 Trusted by families for genuine advice, not just transactions.
@@ -323,34 +321,40 @@ export default function ShineOneEstateForm() {
             <span style={{ animation: 'bounce 2s infinite 0.4s' }}>💎</span>
           </div>
           <p style={{ margin: '0', fontSize: '0.9rem', fontWeight: '500', opacity: '0.9' }}>
-            ✨ Empowering plot buyers with clarity, care, and commitment.
+            ✨ Empowering property buyers with clarity, care, and commitment.
           </p>
         </div>
       </div>
-      <a 
-        href="https://wa.me/919310994032?text=Hi%2C%20I%20am%20interested%20in%20your%20properties%20listed%20on%20ShineOneEstate.%20Please%20share%20more%20details." 
-        target="_blank" 
-        rel="noopener noreferrer"
-        style={{
-          position: 'fixed',
-          bottom: '20px',
-          right: '20px',
-          backgroundColor: '#25D366',
-          color: 'white',
-          borderRadius: '50%',
-          width: '60px',
-          height: '60px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-          zIndex: 9999,
-          textDecoration: 'none',
-          fontSize: '28px'
-        }}
-      >
-        🟢
-      </a>
+     <a 
+  href="https://wa.me/919310994032?text=Hi%2C%20I%20am%20interested%20in%20your%20properties%20listed%20on%20ShineOneEstate.%20Please%20share%20more%20details." 
+  target="_blank" 
+  rel="noopener noreferrer"
+  style={{
+    position: 'fixed',
+    bottom: '20px',
+    right: '20px',
+    backgroundColor: '#25D366',
+    color: 'white',
+    borderRadius: '50%',
+    width: '60px',
+    height: '60px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+    zIndex: 9999,
+    textDecoration: 'none',
+  }}
+>
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+    alt="WhatsApp"
+    style={{
+      width: '28px',
+      height: '28px'
+    }}
+  />
+</a>
     </div>
   );
 }
