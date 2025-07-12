@@ -77,6 +77,11 @@ export default function ShineOneEstateForm() {
     }
   };
 
+  const contactWhatsApp = () => {
+    const message = `Hi, I am interested in your properties listed on ShineOneEstate. Please share more details.`;
+    window.open(`https://wa.me/919310994032?text=${encodeURIComponent(message)}`);
+  };
+
   const benefits = [
     { icon: '🏡', title: 'Premium Locations', desc: 'Sector 92-95 & Sohna Road' },
     { icon: '📈', title: '300% Returns', desc: 'Guaranteed appreciation' },
@@ -322,6 +327,30 @@ export default function ShineOneEstateForm() {
           </p>
         </div>
       </div>
+      <a 
+        href="https://wa.me/919310994032?text=Hi%2C%20I%20am%20interested%20in%20your%20properties%20listed%20on%20ShineOneEstate.%20Please%20share%20more%20details." 
+        target="_blank" 
+        rel="noopener noreferrer"
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          backgroundColor: '#25D366',
+          color: 'white',
+          borderRadius: '50%',
+          width: '60px',
+          height: '60px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+          zIndex: 9999,
+          textDecoration: 'none',
+          fontSize: '28px'
+        }}
+      >
+        🟢
+      </a>
     </div>
   );
 }
