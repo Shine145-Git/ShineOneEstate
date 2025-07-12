@@ -305,7 +305,9 @@ Please share more details.
                       <div style={styles.specLabel}>Type</div>
                     </div>
                   </div>
-                  <div style={styles.propertyPrice}>₹{prop.price || 'N.A'} Lakhs</div>
+                  <div style={styles.propertyPrice}>
+  {typeof prop.price === 'number' ? `₹${prop.price} Lakhs` : ''}
+</div>
                   <div style={styles.propertyActions}>
                     <button style={styles.btnPrimary} onClick={() => viewDetails(prop.id || prop._id)}>View Details</button>
                     <button style={styles.btnWhatsapp} onClick={() => contactWhatsApp(prop.id || prop._id)}>
