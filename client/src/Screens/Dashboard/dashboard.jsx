@@ -289,9 +289,7 @@ Please share more details.
                   </button>
                 </div>
                 <div style={styles.propertyDetails}>
-                 <h3 style={styles.propertyTitle}>
-  {prop.title ? `${prop.title} - ${prop.locality}` : `Premium Property - ${prop.locality}`}
-</h3>
+                  <h3 style={styles.propertyTitle}>{prop.title || `Premium Plot - ${prop.locality}`}</h3>
                   <div style={styles.propertyLocation}>
                     📍 {prop.locality || 'Gurgaon'}
                   </div>
@@ -307,9 +305,7 @@ Please share more details.
                       <div style={styles.specLabel}>Type</div>
                     </div>
                   </div>
-                 <div style={styles.propertyPrice}>
-  {prop.price > 0 ? `₹${prop.price} Lakhs` : ''}
-</div>
+                  <div style={styles.propertyPrice}>₹{prop.price || '75'} Lakhs</div>
                   <div style={styles.propertyActions}>
                     <button style={styles.btnPrimary} onClick={() => viewDetails(prop.id || prop._id)}>View Details</button>
                     <button style={styles.btnWhatsapp} onClick={() => contactWhatsApp(prop.id || prop._id)}>
@@ -339,6 +335,7 @@ Please share more details.
             <p><strong>Price:</strong> ₹{selectedPlot.price} Lakhs</p>
             <p><strong>Price Per SqFt:</strong> ₹{selectedPlot.pricePerSqFt}</p>
             <p><strong>Status:</strong> {selectedPlot.status}</p>
+            <p><strong>Description:</strong> {selectedPlot.tags || 'N/A'}</p>
            
           </div>
         </div>
@@ -370,7 +367,6 @@ Please share more details.
           </div>
           <div style={styles.footerSection}>
             <h3 style={styles.footerTitle}>Contact Info</h3>
-            <p>Parveen Chawla</p>
             <p>📞 +91 9310994032</p>
             <p>✉️ ShineOneEstate@gmail.com</p>
             <p>📍 Gurgaon, Haryana</p>
