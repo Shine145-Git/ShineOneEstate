@@ -1,3 +1,5 @@
+const axios = require("axios");
+const crypto = require("crypto");
 const User = require("../models/User.Model");
 const sendEmail = require("../middleware/EmailVerify");
 
@@ -15,6 +17,47 @@ const registerUser = async (req, res) => {
   `You have a new potential customer inquiry:\n\n👤 Name: ${name}\n📞 Contact: ${contact}\n💰 Budget: ₹${budget || "Not provided"}\n\nPlease reach out to assist them with available plots.`
 );
     await user.save();
+
+    // Send Lead event to Meta Conversions API
+    try {
+      const ACCESS_TOKEN = process.env.META_ACCESS_TOKEN;
+      const PIXEL_ID = process.env.META_PIXEL_ID;
+      const META_API_URL = `https://graph.facebook.com/v19.0/${PIXEL_ID}/events`;
+
+      const hash = (value) =>
+        crypto.createHash("sha256").update(value).digest("hex");
+
+      const eventData = {
+        data: [
+          {
+            event_name: "Lead",
+            event_time: Math.floor(Date.now() / 1000),
+            action_source: "website",
+            event_source_url: req.headers.referer || "https://your-site.com",
+            user_data: {
+              em: [hash(`${contact}@placeholder.com`)],
+              ph: [hash(contact)],
+              fn: [hash(name.split(" ")[0])],
+              ln: [hash(name.split(" ")[1] || "")],
+              client_user_agent: req.headers["user-agent"]
+            },
+            custom_data: {
+              content_name: "Property Lead",
+              content_category: "Real Estate"
+            }
+          }
+        ],
+        
+      };
+
+      await axios.post(
+        `${META_API_URL}?access_token=${ACCESS_TOKEN}`,
+        eventData
+      );
+    } catch (metaErr) {
+      console.error("Meta CAPI Lead event failed:", metaErr.response?.data || metaErr.message);
+    }
+
     res.json({ message: "User registered successfully", userId: user._id });
   } catch (error) {
     console.error(error);
