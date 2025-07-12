@@ -80,14 +80,14 @@ const ShineOneEstate = () => {
     
     setProperties(filtered);
   };
-  const filteredPlots = plots.filter((plot) => {
-  const locationMatch = filters.location
-    ? plot.address === filters.location
-    : true;
+  const filteredPlots = properties.filter((plot) => {
+    const locationMatch = filters.location
+      ? plot.address === filters.location
+      : true;
 
-  // add any other filters here...
-  return locationMatch;
-});
+    // add any other filters here...
+    return locationMatch;
+  });
   const contactWhatsApp = (plotId) => {
     const plot = properties.find(p => (p.id || p._id) === plotId);
     if (!plot) return;
@@ -242,7 +242,7 @@ Please share more details.
     }
   >
     <option value="">All Locations</option>
-    {[...new Set(plots.map((plot) => plot.address))].map((loc, index) => (
+    {[...new Set(properties.map((plot) => plot.address))].map((loc, index) => (
       <option key={index} value={loc}>
         {loc}
       </option>
