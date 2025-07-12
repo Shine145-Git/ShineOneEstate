@@ -130,40 +130,31 @@ Please share more details.
     stat: { textAlign: 'center', minWidth: '120px' },
     statNumber: { fontSize: '2rem', fontWeight: 'bold', color: '#A3E635' },
     statLabel: { fontSize: '0.9rem', opacity: 0.8 },
-    filters: {
-    padding: '1rem',
-    background: '#f9f9f9',
-  },
-  filterRow: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '1rem',
-    alignItems: 'center',
-  },
-  filterGroup: {
-    display: 'flex',
-    flexDirection: 'column',
-    minWidth: '150px',
-  },
-  filterLabel: {
-    marginBottom: '0.25rem',
-    fontSize: '14px',
-  },
-  filterInput: {
-    padding: '0.5rem',
-    borderRadius: '4px',
-    border: '1px solid #ccc',
-  },
-  filterBtn: {
-    padding: '0.5rem 1rem',
-    marginTop: '1.4rem', // aligns button vertically with select inputs
-    backgroundColor: '#007bff',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    height: '38px', // match select height if needed
-  },    propertiesContainer: { maxWidth: '1200px', margin: '0 auto', padding: '2rem 1rem' },
+filters: { background: 'white', padding: '2rem', margin: '2rem 1rem', maxWidth: '1200px', marginLeft: 'auto', marginRight: 'auto', borderRadius: '15px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' },
+    filterRow: { display: 'flex', gap: '1rem', flexWrap: 'wrap' },
+    
+    filterLabel: { display: 'block', marginBottom: '0.5rem', fontWeight: 500, color: '#2D2D2D' },
+    filterInput: { width: '100%', padding: '0.8rem', border: '2px solid #e5e7eb', borderRadius: '8px', fontSize: '1rem', transition: 'all 0.3s ease', boxSizing: 'border-box' },
+   filterGroup: { 
+  flex: 1, 
+  minWidth: '200px', 
+  display: 'flex', 
+  flexDirection: 'column', 
+  justifyContent: 'flex-end' // ensures vertical alignment 
+},
+
+filterBtn: { 
+  background: 'linear-gradient(45deg, #A3E635, #84cc16)', 
+  color: 'white', 
+  border: 'none', 
+  padding: '0.8rem 2rem', 
+  borderRadius: '8px', 
+  fontWeight: 600, 
+  cursor: 'pointer', 
+  transition: 'all 0.3s ease', 
+  width: '100%',
+  marginTop: '1.9rem' // aligns the button with dropdowns
+}
     propertiesGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' },
     propertyCard: { background: 'white', borderRadius: '15px', overflow: 'hidden', boxShadow: '0 5px 20px rgba(0,0,0,0.1)', transition: 'all 0.3s ease', position: 'relative' },
     propertyImage: { height: '200px', background: 'linear-gradient(45deg, #667eea, #764ba2)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem', color: 'rgba(255,255,255,0.3)' },
