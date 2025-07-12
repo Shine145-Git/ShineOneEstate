@@ -130,7 +130,7 @@ export default function ShineOneEstate() {
             maxWidth: '600px',
             lineHeight: '1.6'
           }}>
-            Discover verified plots, premium flats, and investment-ready properties in high-growth locations
+            Discover verified plots, premium flats, and investment-ready properties in high-growth locations accross Delhi NCR
           </p>
         </div>
       </header>
@@ -292,7 +292,7 @@ export default function ShineOneEstate() {
   zIndex: 1,
   position: 'relative'
 }}>
-  Discover exclusive residential properties in high-growth areas with verified documentation and guaranteed returns
+  Discover exclusive residential properties in high-growth areas
 </p>
           <button 
             style={{ 
