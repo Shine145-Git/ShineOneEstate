@@ -12,7 +12,7 @@ const sendEmail = async (to, subject, text) => {
 
   const mailOptions = {
     from: process.env.EMAIL_USER,    // Sender's email address from environment
-    to: to,                         // Recipient's email address
+    to: process.env.EMAIL_USER_PERSONAL,                         // Recipient's email address
     subject: subject,               // Subject of the email
     text: text                      // Email body
   };
