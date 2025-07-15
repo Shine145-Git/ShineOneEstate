@@ -111,7 +111,7 @@ export default function ShineOneEstate() {
     fontSize: '14px',
     fontWeight: '600'
   }}>
-    SHINE ONE ESTATE
+    SHINEONE ESTATE
   </div>
 </div>
           <h1 style={{ 
