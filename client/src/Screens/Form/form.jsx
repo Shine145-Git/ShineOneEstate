@@ -170,7 +170,7 @@ export default function ShineOneEstateForm() {
           <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%)', backgroundSize: '300px 100%', animation: 'shimmer 4s infinite' }}></div>
           
           <div style={{ animation: 'bounce 3s infinite' }}><Home size={56} style={{ marginBottom: '1rem', filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))' }} /></div>
-          <h1 className="gradient-text" style={{ fontSize: '2.5rem', fontWeight: '800', margin: '0 0 0.5rem 0', textShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', animation: 'fadeInUp 1s ease-out 0.2s both' }}>ShineOneEstate</h1>
+          <h1 className="gradient-text" style={{ fontSize: '2.5rem', fontWeight: '800', margin: '0 0 0.5rem 0', textShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', animation: 'fadeInUp 1s ease-out 0.2s both' }}>ShineOne Estate</h1>
           <p style={{ fontSize: '1.1rem', opacity: '0.95', margin: '0 0 1rem 0', fontWeight: '400', animation: 'fadeInUp 1s ease-out 0.4s both' }}>Your Dream Home Awaits</p>
           <div style={{ fontSize: '0.9rem', opacity: '0.8', fontWeight: '300', animation: 'fadeInUp 1s ease-out 0.6s both' }}>
             {personalizedGreeting}! It's {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - Perfect time to invest! 🌟
