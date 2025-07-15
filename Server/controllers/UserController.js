@@ -47,6 +47,7 @@ const registerUser = async (req, res) => {
             }
           }
         ],
+        test_event_code: "TEST59950"
         
       };
 
