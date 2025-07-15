@@ -97,23 +97,23 @@ export default function ShineOneEstate() {
           alignItems: 'center',
           textAlign: 'center'
         }}>
-          <div style={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            gap: '12px', 
-            marginBottom: '16px'
-          }}>
-            <div style={{ 
-              backgroundColor: '#2E7D32', 
-              color: 'white', 
-              padding: '8px 12px', 
-              borderRadius: '8px',
-              fontSize: '14px',
-              fontWeight: '600'
-            }}>
-              SHINEONE ESTATE
-            </div>
-          </div>
+     <div style={{ 
+  display: 'flex', 
+  alignItems: 'center', 
+  gap: '12px', 
+  marginBottom: '16px'
+}}>
+  <div style={{ 
+    backgroundColor: '#4A1C1C', 
+    color: '#D4AF37', 
+    padding: '8px 12px', 
+    borderRadius: '8px',
+    fontSize: '14px',
+    fontWeight: '600'
+  }}>
+    SHINE ONE ESTATE
+  </div>
+</div>
           <h1 style={{ 
             fontSize: '2.5rem', 
             fontWeight: '700', 
