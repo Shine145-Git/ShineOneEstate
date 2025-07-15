@@ -291,6 +291,35 @@ export default function ShineOneEstateForm() {
               </span>
               <div style={{ position: 'absolute', top: 0, left: '-100%', width: '100%', height: '100%', background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)', animation: loading ? 'none' : 'shimmer 2.5s infinite' }}></div>
             </button>
+            {/* WhatsApp button below main submit */}
+            <button
+              onClick={contactWhatsApp}
+              style={{
+                width: '100%',
+                marginTop: '1rem',
+                padding: '1.3rem',
+                background: '#25D366',
+                color: 'white',
+                border: 'none',
+                borderRadius: '16px',
+                fontSize: '1.2rem',
+                fontWeight: '700',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 6px 20px rgba(0, 0, 0, 0.1)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.75rem'
+              }}
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                alt="WhatsApp"
+                style={{ width: '24px', height: '24px' }}
+              />
+              Continue on WhatsApp
+            </button>
           </div>
 
           {message && (
