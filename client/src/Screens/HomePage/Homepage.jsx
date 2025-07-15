@@ -11,6 +11,7 @@ export default function ShineOneEstate() {
     console.log('Navigate to form page');
   };
 
+
   const [companies, setCompanies] = useState([
     { name: 'DLF Ltd.', shortName: 'DLF', category: 'Premium' },
     { name: 'Reliance MET City', shortName: 'RELIANCE', category: 'Premium' },
@@ -70,7 +71,6 @@ export default function ShineOneEstate() {
     const domain = domainMap[shortName];
     if (!domain) return '';
 
-    // Multi-source fallback
     return `https://logo.clearbit.com/${domain}` ||
            `https://logo.uplead.com/${domain}` ||
            `https://brandfetch.com/${domain}`;
@@ -79,13 +79,14 @@ export default function ShineOneEstate() {
   return (
     <div style={{ 
       minHeight: '100vh', 
-      backgroundColor: '#FAF3E0',
+      background: 'linear-gradient(135deg, rgba(128, 0, 0, 0.75) 0%, #1a1a1a 80%, #0f0f0f 100%)',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
     }}>
       {/* Header */}
       <header style={{ 
-        backgroundColor: '#FFFFFF', 
-        borderBottom: '1px solid #E5E7EB',
+        backgroundColor: 'rgba(45, 2, 2, 0.52)', 
+        backdropFilter: 'blur(10px)',
+        borderBottom: '1px solid rgba(128, 0, 0, 0.3)',
         padding: '24px 0'
       }}>
         <div style={{ 
@@ -97,35 +98,50 @@ export default function ShineOneEstate() {
           alignItems: 'center',
           textAlign: 'center'
         }}>
-     <div style={{ 
-  display: 'flex', 
-  alignItems: 'center', 
-  gap: '12px', 
-  marginBottom: '16px'
-}}>
-  <div style={{ 
-    backgroundColor: '#4A1C1C', 
-    color: '#D4AF37', 
-    padding: '8px 12px', 
-    borderRadius: '8px',
-    fontSize: '14px',
-    fontWeight: '600'
-  }}>
-    SHINEONE ESTATE
-  </div>
-</div>
+          <div style={{ 
+            display: 'flex', 
+            alignItems: 'centr', 
+            gap: '12px', 
+            marginBottom: '16px'
+          }}>
+                      <div style={{ animation: 'bounce 3s infinite', marginBottom: '1rem' }}>
+            <img 
+    src="/Logo1.png" 
+    alt="Logo" 
+    style={{ width: '99px', height: '99px', filter: 'drop-shadow(0 4px 8px rgba(212, 175, 55, 0.3))' }} 
+  />
+          </div>
+          
+        <h1
+  style={{
+    fontSize: '2.8rem',
+    fontWeight: '700',
+    margin: '0 0 0.5rem 0',
+    color: '#D4AF37',
+    textShadow: '0 4px 8px rgba(0, 0, 0, 0.5)',
+    animation: 'fadeInUp 1s ease-out 0.2s both',
+    letterSpacing: '2px',
+    fontFamily: "'Poppins', sans-serif"
+  }}
+>
+           <span style={{ color: '#D4AF37' }}>ShineOne</span>{' '}
+           <br/>
+  <span style={{ color: '#ffffff' }}>Estate</span>
+</h1>
+          </div>
           <h1 style={{ 
             fontSize: '2.5rem', 
             fontWeight: '700', 
-            color: '#2D2D2D', 
+            color: '#FFFFFF', 
             margin: '0 0 12px 0',
-            lineHeight: '1.2'
+            lineHeight: '1.2',
+            textShadow: '0 2px 4px rgba(0,0,0,0.5)'
           }}>
             Trusted Developer
           </h1>
           <p style={{ 
             fontSize: '1.1rem', 
-            color: '#6B7280', 
+            color: '#C0C0C0', 
             margin: '0',
             maxWidth: '600px',
             lineHeight: '1.6'
@@ -149,31 +165,47 @@ export default function ShineOneEstate() {
           marginBottom: '48px'
         }}>
           <div style={{ 
-            backgroundColor: '#FFFFFF', 
+            background: 'linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(15, 15, 15, 0.9))',
+            backdropFilter: 'blur(10px)',
             padding: '32px 24px', 
             borderRadius: '12px', 
-            boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+            border: '1px solid rgba(128, 0, 0, 0.3)',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
             textAlign: 'center'
           }}>
-            <div style={{ fontSize: '2rem', fontWeight: '700', color: '#2E7D32', marginBottom: '8px' }}>
+            <div style={{ 
+              fontSize: '2rem', 
+              fontWeight: '700', 
+              color: '#D4AF37', 
+              marginBottom: '8px',
+              textShadow: '0 2px 4px rgba(0,0,0,0.5)'
+            }}>
               24+
             </div>
-            <div style={{ fontSize: '0.95rem', color: '#6B7280' }}>
+            <div style={{ fontSize: '0.95rem', color: '#C0C0C0' }}>
                Developers
             </div>
           </div>
          
           <div style={{ 
-            backgroundColor: '#FFFFFF', 
+            background: 'linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(15, 15, 15, 0.9))',
+            backdropFilter: 'blur(10px)',
             padding: '32px 24px', 
             borderRadius: '12px', 
-            boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+            border: '1px solid rgba(128, 0, 0, 0.3)',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
             textAlign: 'center'
           }}>
-            <div style={{ fontSize: '2rem', fontWeight: '700', color: '#F87171', marginBottom: '8px' }}>
+            <div style={{ 
+              fontSize: '2rem', 
+              fontWeight: '700', 
+              color: '#D4AF37', 
+              marginBottom: '8px',
+              textShadow: '0 2px 4px rgba(0,0,0,0.5)'
+            }}>
               50+
             </div>
-            <div style={{ fontSize: '0.95rem', color: '#6B7280' }}>
+            <div style={{ fontSize: '0.95rem', color: '#C0C0C0' }}>
               Prime Locations
             </div>
           </div>
@@ -189,14 +221,21 @@ export default function ShineOneEstate() {
           {companies.map((company, index) => (
             <div key={index} 
                  style={{ 
-                   backgroundColor: '#FFFFFF',
+                   background: hoveredCard === index 
+                     ? 'linear-gradient(135deg, rgba(128, 0, 0, 0.4), rgba(26, 26, 26, 0.9))'
+                     : 'linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(15, 15, 15, 0.9))',
+                   backdropFilter: 'blur(10px)',
                    borderRadius: '12px',
                    padding: '24px',
-                   border: '1px solid #E5E7EB',
-                   boxShadow: hoveredCard === index ? '0 4px 12px rgba(0,0,0,0.1)' : '0 1px 3px rgba(0,0,0,0.1)',
-                   transition: 'all 0.2s ease',
+                   border: hoveredCard === index 
+                     ? '1px solid rgba(128, 0, 0, 0.6)' 
+                     : '1px solid rgba(128, 0, 0, 0.3)',
+                   boxShadow: hoveredCard === index 
+                     ? '0 8px 24px rgba(128, 0, 0, 0.3)' 
+                     : '0 4px 12px rgba(0,0,0,0.3)',
+                   transition: 'all 0.3s ease',
                    cursor: 'pointer',
-                   transform: hoveredCard === index ? 'translateY(-2px)' : 'translateY(0)'
+                   transform: hoveredCard === index ? 'translateY(-4px)' : 'translateY(0)'
                  }}
                  onMouseEnter={() => setHoveredCard(index)}
                  onMouseLeave={() => setHoveredCard(null)}>
@@ -210,16 +249,22 @@ export default function ShineOneEstate() {
                 <div style={{ 
                   width: '48px', 
                   height: '48px',
-                  backgroundColor: '#FAF3E0',
+                  background: 'linear-gradient(45deg, rgba(128, 0, 0, 0.3), rgba(26, 26, 26, 0.6))',
                   borderRadius: '8px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   flexShrink: 0,
-                  overflow: 'hidden'
+                  overflow: 'hidden',
+                  border: '1px solid rgba(128, 0, 0, 0.4)'
                 }}>
                   {company.logoError ? (
-                    <div style={{ fontSize: '1.2rem', color: '#2E7D32', fontWeight: 600 }}>
+                    <div style={{ 
+                      fontSize: '1.2rem', 
+                      color: '#D4AF37', 
+                      fontWeight: 600,
+                      textShadow: '0 1px 2px rgba(0,0,0,0.5)'
+                    }}>
                       {company.shortName.charAt(0)}
                     </div>
                   ) : (
@@ -229,7 +274,8 @@ export default function ShineOneEstate() {
                       style={{ 
                         width: '32px', 
                         height: '32px',
-                        objectFit: 'contain'
+                        objectFit: 'contain',
+                        filter: 'brightness(1.2) contrast(1.1)'
                       }}
                       onError={() => {
                         const updated = [...companies];
@@ -243,80 +289,85 @@ export default function ShineOneEstate() {
                   <h3 style={{ 
                     fontSize: '1.1rem', 
                     fontWeight: '600', 
-                    color: '#2D2D2D', 
-                    margin: '0 0 4px 0'
+                    color: '#FFFFFF', 
+                    margin: '0 0 4px 0',
+                    textShadow: '0 1px 2px rgba(0,0,0,0.5)'
                   }}>
                     {company.name}
                   </h3>
                   <span style={{ 
                     fontSize: '0.85rem', 
-                    color: '#6B7280',
-                    backgroundColor: '#FAF3E0',
+                    color: '#D4AF37',
+                    background: 'linear-gradient(45deg, rgba(128, 0, 0, 0.3), rgba(26, 26, 26, 0.6))',
                     padding: '2px 8px',
-                    borderRadius: '4px'
+                    borderRadius: '4px',
+                    border: '1px solid rgba(128, 0, 0, 0.4)'
                   }}>
                     {company.category}
                   </span>
                 </div>
               </div>
-              
-            
             </div>
           ))}
         </div>
 
         {/* CTA Section */}
         <div style={{ 
-          backgroundColor: '#FFFFFF',
+          background: 'linear-gradient(135deg, rgba(26, 26, 26, 2.9), rgba(103, 8, 8, 0.75))',
+          backdropFilter: 'blur(10px)',
           borderRadius: '16px',
           padding: '48px 32px',
           textAlign: 'center',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-          border: '1px solid #E5E7EB'
+          boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
+          border: '1px solid rgba(128, 0, 0, 0.4)'
         }}>
           <h2 style={{ 
             fontSize: '2rem', 
             fontWeight: '700', 
-            color: '#2D2D2D', 
-            margin: '0 0 16px 0'
+            color: '#FFFFFF', 
+            margin: '0 0 16px 0',
+            textShadow: '0 2px 4px rgba(0,0,0,5.5)'
           }}>
             Ready to Invest in Premium Properties?
           </h2>
-         <p style={{
-  fontSize: '1.1rem',
-  color: '#6B7280',
-  margin: '0 0 32px 0',
-  maxWidth: '600px',
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  zIndex: 1,
-  position: 'relative'
-}}>
-  Discover exclusive residential properties in high-growth areas
-</p>
+          <p style={{
+            fontSize: '1.1rem',
+            color: '#C0C0C0',
+            margin: '0 0 32px 0',
+            maxWidth: '600px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            zIndex: 1,
+            position: 'relative'
+          }}>
+            Discover exclusive residential properties in high-growth areas
+          </p>
           <button 
             style={{ 
-              backgroundColor: '#2E7D32',
-              color: 'white',
+              background: 'linear-gradient(45deg, rgba(128, 0, 0, 0.8), #1a1a1a)',
+              color: '#D4AF37',
               padding: '16px 32px',
               fontSize: '1.1rem',
               fontWeight: '600',
-              border: 'none',
+              border: '1px solid rgba(128, 0, 0, 0.34)',
               borderRadius: '8px',
               cursor: 'pointer',
-              boxShadow: '0 2px 4px rgba(46,125,50,0.2)',
-              transition: 'all 0.2s ease'
+              boxShadow: '0 4px 12px rgba(128, 0, 0, 0.46)',
+              transition: 'all 0.3s ease',
+              textShadow: '0 1px 2px rgba(0, 0, 0, 1)'
             }}
             onClick={handleExploreClick}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#F4A261';
-              e.currentTarget.style.transform = 'translateY(-1px)';
-              e.currentTarget.style.boxShadow = '0 4px 8px rgba(244,162,97,0.3)';
+              e.currentTarget.style.background = 'linear-gradient(45deg, rgba(128, 0, 0, 1), #0f0f0f)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(128, 0, 0, 0.5)';
+              e.currentTarget.style.color = '#FFFFFF';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#2E7D32';
+              e.currentTarget.style.background = 'linear-gradient(45deg, rgba(128, 0, 0, 0.8), #1a1a1a)';
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 2px 4px rgba(46,125,50,0.2)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(128, 0, 0, 0.3)';
+              e.currentTarget.style.color = '#D4AF37';
             }}
           >
             Explore Premium Properties
